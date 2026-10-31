@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: "6 9 * * *"     # 12:06 İstanbul — hikâye
     - cron: "35 16 * * *"   # 19:35 İstanbul — gönderi
+    - cron: "40 9 * * *"    # yedek: 12:40 hikâye (o gün paylaşılmadıysa)
+    - cron: "15 17 * * *"   # yedek: 20:15 gönderi (o gün paylaşılmadıysa)
     - cron: "0 3 * * 1"     # Pazartesi 06:00 — erişim anahtarını yenile
   workflow_dispatch:
     inputs:
@@ -30,7 +32,7 @@ jobs:
         id: mode
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then m="${{ inputs.mode }}";
-          elif [ "${{ github.event.schedule }}" = "6 9 * * *" ]; then m=story;
+          elif [ "${{ github.event.schedule }}" = "6 9 * * *" ] || [ "${{ github.event.schedule }}" = "40 9 * * *" ]; then m=story;
           elif [ "${{ github.event.schedule }}" = "0 3 * * 1" ]; then m=refresh;
           else m=post; fi
           echo "mode=$m" >> "$GITHUB_OUTPUT"

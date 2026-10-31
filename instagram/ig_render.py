@@ -35,6 +35,10 @@ LOGO = ('<svg width="{s}" height="{s}" viewBox="0 0 100 100"><path d="M34 75V38a
         '<path d="M26 75h49" stroke="{c}" stroke-width="3.2"/><circle cx="50.5" cy="47.5" r="5.5" fill="{c}"/><path d="M46.6 51.7L47.7 62.5H52.3L53.4 51.7Z" fill="{c}"/></svg>')
 
 
+def up(t):
+    return t.replace("i", "İ").replace("ı", "I").upper()
+
+
 def e(t):
     return html.escape(t, quote=False)
 
@@ -110,7 +114,7 @@ def cover(cat, t):
     inner = (f"<div style='display:flex;align-items:center;justify-content:space-between'>"
              f"<div style='display:flex;align-items:center;gap:20px'>{LOGO.format(s=72, c=GOLD_D)}"
              f"<span style='font-family:{SERIF};font-size:34px;font-weight:600'>Cezaevi Rehberi</span></div>"
-             f"<span style='font-size:24px;font-weight:600;color:{MUTED};letter-spacing:3px'>{e(cat.upper())}</span></div>"
+             f"<span style='font-size:24px;font-weight:600;color:{MUTED};letter-spacing:3px'>{e(up(cat))}</span></div>"
              f"<div style='display:flex;flex-direction:column;gap:44px'>"
              f"<h1 style='margin:0;font-family:{SERIF};font-weight:600;font-size:{size}px;line-height:1.05;letter-spacing:-1.5px'>{title}</h1>"
              f"<div style='width:120px;height:6px;border-radius:3px;background:{GOLD_D}'></div>"
@@ -144,7 +148,7 @@ def inner_page(label, heading, items, idx, total, cont):
     body = "".join(item_html(k, t, fs) for k, t in items)
     head = e(heading) + (" <span style='color:#8A96A6;font-weight:400'>(devam)</span>" if cont else "")
     inner = (f"<div style='display:flex;align-items:center;justify-content:space-between'>"
-             f"<span style='font-size:24px;font-weight:600;letter-spacing:3px;color:{INKSOFT}'>{e(label.upper())}</span>{dots(idx, total)}</div>"
+             f"<span style='font-size:24px;font-weight:600;letter-spacing:3px;color:{INKSOFT}'>{e(up(label))}</span>{dots(idx, total)}</div>"
              f"<div style='display:flex;flex-direction:column;gap:40px'>"
              f"<h2 style='margin:0;font-family:{SERIF};font-weight:600;font-size:76px;line-height:1.08;letter-spacing:-1px'>{head}</h2>"
              f"<div style='display:flex;flex-direction:column;gap:30px'>{body}</div></div>"
@@ -169,7 +173,7 @@ def story_page(heading, text, kind):
     inner = (f"<div style='display:flex;align-items:center;gap:22px'>{LOGO.format(s=76, c=GOLD_D)}"
              f"<span style='font-size:30px;font-weight:600;color:{GOLD_D};letter-spacing:4px'>{label}</span></div>"
              f"<div style='background:{PAPER};color:{INK};border-radius:44px;padding:72px 64px;display:flex;flex-direction:column;gap:32px'>"
-             f"<span style='font-size:28px;font-weight:600;letter-spacing:2px;color:{INKSOFT}'>{e(heading.upper())}</span>"
+             f"<span style='font-size:28px;font-weight:600;letter-spacing:2px;color:{INKSOFT}'>{e(up(heading))}</span>"
              f"<p style='margin:0;font-family:{SERIF};font-weight:600;font-size:{size}px;line-height:1.2'>{e(text)}</p></div>"
              f"<div style='display:flex;flex-direction:column;align-items:center;gap:20px'>"
              f"<span style='font-size:32px;font-weight:600'>Ayrıntılar Cezaevi Rehberi uygulamasında</span>"

@@ -41,7 +41,11 @@ jobs:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          new=$(curl -fsS "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$IG_TOKEN" | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
+          # Süresiz (sistem kullanıcısı) anahtarlarda yenileme gerekmez; hata verirse atlanır.
+          if [ -z "$GH_TOKEN" ]; then echo "GH_PAT yok, yenileme atlandı."; exit 0; fi
+          resp=$(curl -sS "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$IG_TOKEN" || true)
+          new=$(echo "$resp" | python3 -c "import sys,json;print(json.load(sys.stdin).get('access_token',''))" 2>/dev/null || true)
+          if [ -z "$new" ]; then echo "Yenileme gerekmedi veya desteklenmiyor."; exit 0; fi
           echo "::add-mask::$new"
           gh secret set IG_TOKEN --body "$new" --repo "$GITHUB_REPOSITORY"
           echo "Anahtar yenilendi."

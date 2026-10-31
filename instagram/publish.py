@@ -18,7 +18,9 @@ IG = ROOT / "instagram"
 sys.path.insert(0, str(IG))
 import ig_render  # noqa: E402
 
+IG_USER_ID = os.environ.get("IG_USER_ID", "17841464272032848")  # @cezaevirehberi
 API = "https://graph.instagram.com/v21.0"
+API_FB = "https://graph.facebook.com/v21.0"
 TODAY = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=3))).date().isoformat()
 
 
@@ -83,10 +85,17 @@ def publish(plan_path):
     plan = json.loads(pathlib.Path(plan_path).read_text())
     base = os.environ["RAW_BASE"].rstrip("/")
     urls = [f"{base}/{urllib.parse.quote(p)}" for p in plan["images"]]
-    me = call("GET", "me", fields="user_id,username")
+    global API
+    # Anahtar türüne göre doğru adresi seç: Instagram kullanıcı anahtarı -> graph.instagram.com,
+    # sistem kullanıcısı anahtarı -> graph.facebook.com
+    try:
+        me = call("GET", IG_USER_ID, fields="username")
+    except SystemExit:
+        API = API_FB
+        me = call("GET", IG_USER_ID, fields="username")
     if me.get("username") != "cezaevirehberi":
         raise SystemExit(f"Beklenmeyen hesap: {me.get('username')}")
-    uid = me["user_id"]
+    uid = IG_USER_ID
     if plan["type"] == "story":
         cid = call("POST", f"{uid}/media", image_url=urls[0], media_type="STORIES")["id"]
     elif len(urls) == 1:

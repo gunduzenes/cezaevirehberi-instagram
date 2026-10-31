@@ -1,1 +1,18 @@
-{"posts":1,"promo_i":1,"used_topics":[],"used_stories":[],"log":[{"date":"2026-10-31","post":"promo-tanitim.jpg"}]}
+{
+ "posts": 1,
+ "promo_i": 1,
+ "used_topics": [],
+ "used_stories": [
+  "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip"
+ ],
+ "log": [
+  {
+   "date": "2026-10-31",
+   "post": "promo-tanitim.jpg"
+  },
+  {
+   "date": "2026-10-31",
+   "story": "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip"
+  }
+ ]
+}

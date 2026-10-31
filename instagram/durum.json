@@ -1,7 +1,9 @@
 {
- "posts": 1,
+ "posts": 2,
  "promo_i": 1,
- "used_topics": [],
+ "used_topics": [
+  "ilk-adimlar"
+ ],
  "used_stories": [
   "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip"
  ],
@@ -13,6 +15,10 @@
   {
    "date": "2026-10-31",
    "story": "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip"
+  },
+  {
+   "date": "2026-10-31",
+   "post": "ilk-adimlar"
   }
  ]
 }

@@ -1,0 +1,97 @@
+name: Instagram otomatik paylaşım
+
+on:
+  schedule:
+    - cron: "6 9 * * *"     # 12:06 İstanbul — hikâye
+    - cron: "35 16 * * *"   # 19:35 İstanbul — gönderi
+    - cron: "0 3 * * 1"     # Pazartesi 06:00 — erişim anahtarını yenile
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "post | story | refresh"
+        required: true
+        default: post
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mod
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then m="${{ inputs.mode }}";
+          elif [ "${{ github.event.schedule }}" = "6 9 * * *" ]; then m=story;
+          elif [ "${{ github.event.schedule }}" = "0 3 * * 1" ]; then m=refresh;
+          else m=post; fi
+          echo "mode=$m" >> "$GITHUB_OUTPUT"
+
+      - name: Erişim anahtarını yenile
+        if: steps.mode.outputs.mode == 'refresh'
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          new=$(curl -fsS "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$IG_TOKEN" | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
+          echo "::add-mask::$new"
+          gh secret set IG_TOKEN --body "$new" --repo "$GITHUB_REPOSITORY"
+          echo "Anahtar yenilendi."
+
+      - uses: actions/setup-python@v5
+        if: steps.mode.outputs.mode != 'refresh'
+        with:
+          python-version: "3.12"
+
+      - name: Kurulum
+        if: steps.mode.outputs.mode != 'refresh'
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+          mkdir -p ~/.fonts
+          curl -fsSL -o ~/.fonts/Lora.ttf "https://github.com/google/fonts/raw/main/ofl/lora/Lora%5Bwght%5D.ttf"
+          curl -fsSL -o ~/.fonts/Inter.ttf "https://github.com/google/fonts/raw/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf"
+          fc-cache -f
+
+      - name: Uygulamanın güncel içeriğini indir
+        if: steps.mode.outputs.mode != 'refresh'
+        run: curl -fsSL -o content.json "https://gunduzenes-droid.github.io/cezaevi-rehberi/content.json"
+
+      - name: Görselleri hazırla
+        id: prep
+        if: steps.mode.outputs.mode != 'refresh'
+        run: python instagram/publish.py ${{ steps.mode.outputs.mode }}
+
+      - name: Görselleri yayınla (herkese açık adres için)
+        id: push
+        if: steps.prep.outputs.plan != ''
+        run: |
+          git config user.name "cezaevirehberi-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add instagram/out/*/*.jpg instagram/out/*/plan.json
+          git commit -m "Instagram görselleri: $(date +%F) ${{ steps.mode.outputs.mode }}"
+          git push
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          sleep 10
+
+      - name: Instagram'da paylaş
+        if: steps.prep.outputs.plan != ''
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          RAW_BASE: https://raw.githubusercontent.com/${{ github.repository }}/${{ steps.push.outputs.sha }}
+        run: python instagram/publish.py --publish ${{ steps.prep.outputs.plan }}
+
+      - name: Durumu kaydet
+        if: steps.prep.outputs.plan != ''
+        run: |
+          git add instagram/durum.json
+          git commit -m "Instagram durum: $(date +%F) ${{ steps.mode.outputs.mode }}" || true
+          git push

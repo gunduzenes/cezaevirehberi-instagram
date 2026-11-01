@@ -1,8 +1,9 @@
 {
- "posts": 2,
+ "posts": 3,
  "promo_i": 1,
  "used_topics": [
-  "ilk-adimlar"
+  "ilk-adimlar",
+  "telefon-evrak"
  ],
  "used_stories": [
   "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip",
@@ -24,6 +25,10 @@
   {
    "date": "2026-11-01",
    "story": "telefon-evrak|Hat sahibinden istenen belgeler|tip"
+  },
+  {
+   "date": "2026-11-01",
+   "post": "telefon-evrak"
   }
  ]
 }

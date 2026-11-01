@@ -5,7 +5,8 @@
   "ilk-adimlar"
  ],
  "used_stories": [
-  "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip"
+  "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip",
+  "telefon-evrak|Hat sahibinden istenen belgeler|tip"
  ],
  "log": [
   {
@@ -19,6 +20,10 @@
   {
    "date": "2026-10-31",
    "post": "ilk-adimlar"
+  },
+  {
+   "date": "2026-11-01",
+   "story": "telefon-evrak|Hat sahibinden istenen belgeler|tip"
   }
  ]
 }

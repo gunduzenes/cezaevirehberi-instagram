@@ -83,7 +83,7 @@ jobs:
           git config user.name "cezaevirehberi-bot"
           git config user.email "actions@users.noreply.github.com"
           git add instagram/out/*/*.jpg instagram/out/*/plan.json
-          git commit -m "Instagram görselleri: $(date +%F) ${{ steps.mode.outputs.mode }}"
+          git commit -m "Instagram görselleri: $(date +%F) ${{ steps.mode.outputs.mode }}" || echo "Görseller zaten yüklü"
           git push
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           sleep 10

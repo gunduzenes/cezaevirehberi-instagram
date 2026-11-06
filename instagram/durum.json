@@ -1,10 +1,11 @@
 {
- "posts": 4,
+ "posts": 5,
  "promo_i": 1,
  "used_topics": [
   "ilk-adimlar",
   "telefon-evrak",
-  "para-yatirma-atm"
+  "para-yatirma-atm",
+  "ziyaret-hazirlik"
  ],
  "used_stories": [
   "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip",
@@ -34,6 +35,10 @@
   {
    "date": "2026-11-06",
    "post": "para-yatirma-atm"
+  },
+  {
+   "date": "2026-11-06",
+   "post": "ziyaret-hazirlik"
   }
  ]
 }

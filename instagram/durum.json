@@ -1,11 +1,12 @@
 {
- "posts": 5,
+ "posts": 6,
  "promo_i": 1,
  "used_topics": [
   "ilk-adimlar",
   "telefon-evrak",
   "para-yatirma-atm",
-  "ziyaret-hazirlik"
+  "ziyaret-hazirlik",
+  "acik-kapali-gorus"
  ],
  "used_stories": [
   "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip",
@@ -44,6 +45,10 @@
   {
    "date": "2026-11-07",
    "story": "telefon-evrak|Belgeleri nasıl iletirim?|warning"
+  },
+  {
+   "date": "2026-11-07",
+   "post": "acik-kapali-gorus"
   }
  ]
 }

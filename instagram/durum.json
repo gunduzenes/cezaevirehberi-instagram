@@ -9,7 +9,8 @@
  ],
  "used_stories": [
   "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip",
-  "telefon-evrak|Hat sahibinden istenen belgeler|tip"
+  "telefon-evrak|Hat sahibinden istenen belgeler|tip",
+  "telefon-evrak|Belgeleri nasıl iletirim?|warning"
  ],
  "log": [
   {
@@ -39,6 +40,10 @@
   {
    "date": "2026-11-06",
    "post": "ziyaret-hazirlik"
+  },
+  {
+   "date": "2026-11-07",
+   "story": "telefon-evrak|Belgeleri nasıl iletirim?|warning"
   }
  ]
 }

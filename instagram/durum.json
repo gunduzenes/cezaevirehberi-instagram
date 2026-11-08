@@ -1,12 +1,13 @@
 {
- "posts": 7,
+ "posts": 8,
  "promo_i": 2,
  "used_topics": [
   "ilk-adimlar",
   "telefon-evrak",
   "para-yatirma-atm",
   "ziyaret-hazirlik",
-  "acik-kapali-gorus"
+  "acik-kapali-gorus",
+  "tutuklu-hukumlu-farki"
  ],
  "used_stories": [
   "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip",
@@ -53,6 +54,10 @@
   {
    "date": "2026-11-08",
    "post": "promo-infaz.jpg"
+  },
+  {
+   "date": "2026-11-08",
+   "post": "tutuklu-hukumlu-farki"
   }
  ]
 }

@@ -1,6 +1,6 @@
 {
- "posts": 6,
- "promo_i": 1,
+ "posts": 7,
+ "promo_i": 2,
  "used_topics": [
   "ilk-adimlar",
   "telefon-evrak",
@@ -49,6 +49,10 @@
   {
    "date": "2026-11-07",
    "post": "acik-kapali-gorus"
+  },
+  {
+   "date": "2026-11-08",
+   "post": "promo-infaz.jpg"
   }
  ]
 }

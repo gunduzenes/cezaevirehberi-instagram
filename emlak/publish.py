@@ -19,7 +19,7 @@ TODAY = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=3))).da
 
 
 def call(method, path, **params):
-    params["access_token"] = os.environ["IG_TOKEN"]
+    params["access_token"] = os.environ["IG_TOKEN"].strip().strip("\"'")
     data = urllib.parse.urlencode(params).encode()
     url = f"{API}/{path}"
     req = urllib.request.Request(url + "?" + data.decode()) if method == "GET" else urllib.request.Request(url, data=data, method="POST")

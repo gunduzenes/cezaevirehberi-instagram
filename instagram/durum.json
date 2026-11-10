@@ -1,5 +1,5 @@
 {
- "posts": 9,
+ "posts": 10,
  "promo_i": 2,
  "used_topics": [
   "ilk-adimlar",
@@ -8,7 +8,8 @@
   "ziyaret-hazirlik",
   "acik-kapali-gorus",
   "tutuklu-hukumlu-farki",
-  "telefon-kurallar"
+  "telefon-kurallar",
+  "kantin"
  ],
  "used_stories": [
   "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip",
@@ -63,6 +64,10 @@
   {
    "date": "2026-11-09",
    "post": "telefon-kurallar"
+  },
+  {
+   "date": "2026-11-10",
+   "post": "kantin"
   }
  ]
 }

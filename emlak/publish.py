@@ -27,6 +27,9 @@ def call(method, path, **params):
         with urllib.request.urlopen(req, timeout=60) as r:
             return json.loads(r.read())
     except urllib.error.HTTPError as e:
+        t = params["access_token"]
+        kind = "IGAA" if t.startswith("IGAA") else ("EAA" if t.startswith("EAA") else "bilinmeyen")
+        print(f"Anahtar tanısı: uzunluk={len(t)}, tür={kind}, boşluk içeriyor={any(c.isspace() for c in t)}")
         raise SystemExit(f"Instagram API hatası {e.code}: {e.read().decode()[:500]}")
 
 

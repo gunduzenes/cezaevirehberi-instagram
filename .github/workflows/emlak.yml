@@ -1,0 +1,106 @@
+name: Emlak Rehberi Instagram paylaşımı
+
+on:
+  schedule:
+    - cron: "5 17 * * *"    # 20:05 İstanbul — gönderi
+    - cron: "45 17 * * *"   # yedek: 20:45 (o gün paylaşılmadıysa)
+    - cron: "30 3 * * 1"    # Pazartesi 06:30 — erişim anahtarını yenile
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "post | story | refresh"
+        required: true
+        default: post
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-emlak
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      HAS_TOKEN: ${{ secrets.IG_TOKEN_EMLAK != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mod
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then m="${{ inputs.mode }}";
+          elif [ "${{ github.event.schedule }}" = "30 3 * * 1" ]; then m=refresh;
+          else m=post; fi
+          if [ "$HAS_TOKEN" != "true" ]; then echo "IG_TOKEN_EMLAK henüz eklenmedi; atlanıyor."; m=skip; fi
+          echo "mode=$m" >> "$GITHUB_OUTPUT"
+
+      - name: Erişim anahtarını yenile
+        if: steps.mode.outputs.mode == 'refresh'
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN_EMLAK }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then echo "GH_PAT yok, yenileme atlandı."; exit 0; fi
+          resp=$(curl -sS "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$IG_TOKEN" || true)
+          new=$(echo "$resp" | python3 -c "import sys,json;print(json.load(sys.stdin).get('access_token',''))" 2>/dev/null || true)
+          if [ -z "$new" ]; then echo "Yenileme gerekmedi veya desteklenmiyor."; exit 0; fi
+          echo "::add-mask::$new"
+          gh secret set IG_TOKEN_EMLAK --body "$new" --repo "$GITHUB_REPOSITORY"
+          echo "Anahtar yenilendi."
+
+      - uses: actions/setup-python@v5
+        if: steps.mode.outputs.mode == 'post' || steps.mode.outputs.mode == 'story'
+        with:
+          python-version: "3.12"
+
+      - name: Kurulum
+        if: steps.mode.outputs.mode == 'post' || steps.mode.outputs.mode == 'story'
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+          mkdir -p ~/.fonts
+          curl -fsSL -o ~/.fonts/Lora.ttf "https://github.com/google/fonts/raw/main/ofl/lora/Lora%5Bwght%5D.ttf"
+          curl -fsSL -o ~/.fonts/Inter.ttf "https://github.com/google/fonts/raw/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf"
+          fc-cache -f
+
+      - name: Uygulamanın güncel içeriğini indir
+        if: steps.mode.outputs.mode == 'post' || steps.mode.outputs.mode == 'story'
+        run: |
+          curl -fsSL -o emlak-content.json "https://gunduzenes.github.io/emlak-rehberi/content.json" \
+          || curl -fsSL -o emlak-content.json "https://raw.githubusercontent.com/gunduzenes/emlak-rehberi/main/content.json"
+
+      - name: Görselleri hazırla
+        id: prep
+        if: steps.mode.outputs.mode == 'post' || steps.mode.outputs.mode == 'story'
+        run: python emlak/publish.py ${{ steps.mode.outputs.mode }}
+
+      - name: Görselleri yayınla (herkese açık adres için)
+        id: push
+        if: steps.prep.outputs.plan != ''
+        run: |
+          git config user.name "emlakrehberi-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add emlak/out/*/*.jpg emlak/out/*/plan.json
+          git commit -m "Emlak Instagram görselleri: $(date +%F) ${{ steps.mode.outputs.mode }}" || echo "Görseller zaten yüklü"
+          git pull --rebase origin main
+          git push
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          sleep 10
+
+      - name: Instagram'da paylaş
+        if: steps.prep.outputs.plan != ''
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN_EMLAK }}
+          RAW_BASE: https://raw.githubusercontent.com/${{ github.repository }}/${{ steps.push.outputs.sha }}
+        run: python emlak/publish.py --publish ${{ steps.prep.outputs.plan }}
+
+      - name: Durumu kaydet
+        if: steps.prep.outputs.plan != ''
+        run: |
+          git add emlak/durum.json
+          git commit -m "Emlak Instagram durum: $(date +%F) ${{ steps.mode.outputs.mode }}" || true
+          git pull --rebase origin main
+          git push

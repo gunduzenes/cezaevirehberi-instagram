@@ -1,6 +1,6 @@
 {
- "posts": 13,
- "promo_i": 2,
+ "posts": 14,
+ "promo_i": 3,
  "used_topics": [
   "ilk-adimlar",
   "telefon-evrak",
@@ -83,6 +83,10 @@
   {
    "date": "2026-11-11",
    "post": "esya-teslim"
+  },
+  {
+   "date": "2026-11-11",
+   "post": "promo-tanitim.jpg"
   }
  ]
 }

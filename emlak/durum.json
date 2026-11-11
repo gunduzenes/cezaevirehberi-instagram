@@ -1,7 +1,8 @@
 {
- "posts": 2,
+ "posts": 3,
  "used_topics": [
-  "tapu-devri-adim-adim"
+  "tapu-devri-adim-adim",
+  "kira-artis-siniri"
  ],
  "log": [
   {
@@ -11,6 +12,10 @@
   {
    "date": "2026-11-11",
    "post": "sozluk-0"
+  },
+  {
+   "date": "2026-11-12",
+   "post": "kira-artis-siniri"
   }
  ],
  "gloss_i": 3

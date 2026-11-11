@@ -1,5 +1,5 @@
 {
- "posts": 1,
+ "posts": 2,
  "used_topics": [
   "tapu-devri-adim-adim"
  ],
@@ -7,6 +7,11 @@
   {
    "date": "2026-11-10",
    "post": "tapu-devri-adim-adim"
+  },
+  {
+   "date": "2026-11-11",
+   "post": "sozluk-0"
   }
- ]
+ ],
+ "gloss_i": 3
 }

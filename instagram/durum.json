@@ -1,5 +1,5 @@
 {
- "posts": 15,
+ "posts": 16,
  "promo_i": 3,
  "used_topics": [
   "ilk-adimlar",
@@ -13,7 +13,8 @@
   "ziyaret-kimler",
   "e-gorus",
   "esya-teslim",
-  "mektup-esya"
+  "mektup-esya",
+  "esya-cikisi"
  ],
  "used_stories": [
   "ilk-adimlar|Kurum telefonla bilgi verir mi?|tip",
@@ -92,6 +93,10 @@
   {
    "date": "2026-11-12",
    "post": "mektup-esya"
+  },
+  {
+   "date": "2026-11-12",
+   "post": "esya-cikisi"
   }
  ]
 }

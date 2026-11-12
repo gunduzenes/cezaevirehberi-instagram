@@ -1,8 +1,11 @@
 {
- "type": "promo",
- "promo": "promo-tanitim.jpg",
+ "type": "carousel",
+ "topic": "mektup-esya",
  "images": [
-  "instagram/out/2026-11-12-post/promo-tanitim.jpg"
+  "instagram/out/2026-11-12-post/mektup-esya-01.jpg",
+  "instagram/out/2026-11-12-post/mektup-esya-02.jpg",
+  "instagram/out/2026-11-12-post/mektup-esya-03.jpg",
+  "instagram/out/2026-11-12-post/mektup-esya-04.jpg"
  ],
- "caption": "Yakınınız cezaevinde mi?\nTelefon görüşmesi için gereken belgeler, VakıfBank ATM'den para yatırma, ziyaret kuralları ve infaz süreci… Hepsi adım adım, tek uygulamada.\n\nCezaevi Rehberi App Store'da ücretsiz. Bağlantı profilde.\n\nBilgilendirme amaçlıdır, hukuki tavsiye değildir.\n\n#cezaevi #cezaevirehberi #tutuklu #hükümlü #cezaevigörüşü #istanbul"
+ "caption": "Mektup ve kargo gönderme\nMektup adresleme ve kargo ile gönderimde genel kurallar.\n\nAdım adım anlatım için kaydırın. Kaynaklar ve ayrıntılar Cezaevi Rehberi uygulamasında; bağlantı profilde.\n\nBilgilendirme amaçlıdır, hukuki tavsiye değildir.\n\n#cezaevi #cezaevirehberi #tutuklu #hükümlü #cezaevigörüşü #istanbul"
 }

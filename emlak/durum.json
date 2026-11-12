@@ -1,5 +1,5 @@
 {
- "posts": 3,
+ "posts": 4,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri"
@@ -16,7 +16,12 @@
   {
    "date": "2026-11-12",
    "post": "kira-artis-siniri"
+  },
+  {
+   "date": "2026-11-13",
+   "post": "piyasa-Eylül 2026"
   }
  ],
- "gloss_i": 3
+ "gloss_i": 3,
+ "market_asof": "Eylül 2026"
 }

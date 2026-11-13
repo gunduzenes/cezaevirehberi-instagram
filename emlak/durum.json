@@ -1,8 +1,9 @@
 {
- "posts": 4,
+ "posts": 5,
  "used_topics": [
   "tapu-devri-adim-adim",
-  "kira-artis-siniri"
+  "kira-artis-siniri",
+  "kat-irtifaki-mi-kat-mulkiyeti-mi"
  ],
  "log": [
   {
@@ -20,6 +21,10 @@
   {
    "date": "2026-11-13",
    "post": "piyasa-Eylül 2026"
+  },
+  {
+   "date": "2026-11-14",
+   "post": "kat-irtifaki-mi-kat-mulkiyeti-mi"
   }
  ],
  "gloss_i": 3,

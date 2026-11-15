@@ -1,5 +1,5 @@
 {
- "posts": 6,
+ "posts": 7,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
@@ -29,8 +29,13 @@
   {
    "date": "2026-11-15",
    "post": "sozluk-3"
+  },
+  {
+   "date": "2026-11-16",
+   "post": "promo-tanitim"
   }
  ],
  "gloss_i": 6,
- "market_asof": "Eylül 2026"
+ "market_asof": "Eylül 2026",
+ "promo_i": 1
 }

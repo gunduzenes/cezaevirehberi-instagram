@@ -1,5 +1,5 @@
 {
- "posts": 8,
+ "posts": 9,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
@@ -38,9 +38,13 @@
   {
    "date": "2026-11-17",
    "post": "riskli-yapi-tespiti"
+  },
+  {
+   "date": "2026-11-18",
+   "post": "sozluk-6"
   }
  ],
- "gloss_i": 6,
+ "gloss_i": 9,
  "market_asof": "Eylül 2026",
  "promo_i": 1
 }

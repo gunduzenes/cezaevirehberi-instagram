@@ -1,9 +1,10 @@
 {
- "posts": 7,
+ "posts": 8,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
-  "kat-irtifaki-mi-kat-mulkiyeti-mi"
+  "kat-irtifaki-mi-kat-mulkiyeti-mi",
+  "riskli-yapi-tespiti"
  ],
  "log": [
   {
@@ -33,6 +34,10 @@
   {
    "date": "2026-11-16",
    "post": "promo-tanitim"
+  },
+  {
+   "date": "2026-11-17",
+   "post": "riskli-yapi-tespiti"
   }
  ],
  "gloss_i": 6,

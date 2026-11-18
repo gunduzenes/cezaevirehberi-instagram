@@ -1,10 +1,11 @@
 {
- "posts": 9,
+ "posts": 10,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
   "kat-irtifaki-mi-kat-mulkiyeti-mi",
-  "riskli-yapi-tespiti"
+  "riskli-yapi-tespiti",
+  "kat-karsiligi-insaat-sozlesmesi"
  ],
  "log": [
   {
@@ -42,6 +43,10 @@
   {
    "date": "2026-11-18",
    "post": "sozluk-6"
+  },
+  {
+   "date": "2026-11-19",
+   "post": "kat-karsiligi-insaat-sozlesmesi"
   }
  ],
  "gloss_i": 9,

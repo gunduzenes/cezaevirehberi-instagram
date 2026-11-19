@@ -1,5 +1,5 @@
 {
- "posts": 10,
+ "posts": 11,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
@@ -47,9 +47,13 @@
   {
    "date": "2026-11-19",
    "post": "kat-karsiligi-insaat-sozlesmesi"
+  },
+  {
+   "date": "2026-11-20",
+   "post": "piyasa-Ekim 2026"
   }
  ],
  "gloss_i": 9,
- "market_asof": "Eylül 2026",
+ "market_asof": "Ekim 2026",
  "promo_i": 1
 }

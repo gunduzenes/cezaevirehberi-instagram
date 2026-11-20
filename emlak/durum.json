@@ -1,11 +1,12 @@
 {
- "posts": 11,
+ "posts": 12,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
   "kat-irtifaki-mi-kat-mulkiyeti-mi",
   "riskli-yapi-tespiti",
-  "kat-karsiligi-insaat-sozlesmesi"
+  "kat-karsiligi-insaat-sozlesmesi",
+  "hisseli-tapu-payli-ve-elbirligi-mulkiyet"
  ],
  "log": [
   {
@@ -51,6 +52,10 @@
   {
    "date": "2026-11-20",
    "post": "piyasa-Ekim 2026"
+  },
+  {
+   "date": "2026-11-21",
+   "post": "hisseli-tapu-payli-ve-elbirligi-mulkiyet"
   }
  ],
  "gloss_i": 9,

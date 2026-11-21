@@ -1,5 +1,5 @@
 {
- "posts": 12,
+ "posts": 13,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
@@ -56,9 +56,13 @@
   {
    "date": "2026-11-21",
    "post": "hisseli-tapu-payli-ve-elbirligi-mulkiyet"
+  },
+  {
+   "date": "2026-11-22",
+   "post": "sozluk-9"
   }
  ],
- "gloss_i": 9,
+ "gloss_i": 12,
  "market_asof": "Ekim 2026",
  "promo_i": 1
 }

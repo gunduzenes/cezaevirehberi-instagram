@@ -1,5 +1,5 @@
 {
- "posts": 13,
+ "posts": 14,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
@@ -60,9 +60,13 @@
   {
    "date": "2026-11-22",
    "post": "sozluk-9"
+  },
+  {
+   "date": "2026-11-23",
+   "post": "promo-hesapla"
   }
  ],
  "gloss_i": 12,
  "market_asof": "Ekim 2026",
- "promo_i": 1
+ "promo_i": 2
 }

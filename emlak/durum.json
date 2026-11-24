@@ -1,12 +1,13 @@
 {
- "posts": 14,
+ "posts": 15,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
   "kat-irtifaki-mi-kat-mulkiyeti-mi",
   "riskli-yapi-tespiti",
   "kat-karsiligi-insaat-sozlesmesi",
-  "hisseli-tapu-payli-ve-elbirligi-mulkiyet"
+  "hisseli-tapu-payli-ve-elbirligi-mulkiyet",
+  "satis-vaadi-sozlesmesi-ve-noter"
  ],
  "log": [
   {
@@ -64,6 +65,10 @@
   {
    "date": "2026-11-23",
    "post": "promo-hesapla"
+  },
+  {
+   "date": "2026-11-24",
+   "post": "satis-vaadi-sozlesmesi-ve-noter"
   }
  ],
  "gloss_i": 12,

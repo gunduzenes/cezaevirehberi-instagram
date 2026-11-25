@@ -1,5 +1,5 @@
 {
- "posts": 15,
+ "posts": 16,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
@@ -69,9 +69,13 @@
   {
    "date": "2026-11-24",
    "post": "satis-vaadi-sozlesmesi-ve-noter"
+  },
+  {
+   "date": "2026-11-25",
+   "post": "sozluk-12"
   }
  ],
- "gloss_i": 12,
+ "gloss_i": 15,
  "market_asof": "Ekim 2026",
  "promo_i": 2
 }

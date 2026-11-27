@@ -1,5 +1,5 @@
 {
- "posts": 17,
+ "posts": 18,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
@@ -8,7 +8,8 @@
   "kat-karsiligi-insaat-sozlesmesi",
   "hisseli-tapu-payli-ve-elbirligi-mulkiyet",
   "satis-vaadi-sozlesmesi-ve-noter",
-  "kira-uyusmazliklarinda-zorunlu-arabuluculuk"
+  "kira-uyusmazliklarinda-zorunlu-arabuluculuk",
+  "aidat-ve-ortak-giderler"
  ],
  "log": [
   {
@@ -78,6 +79,10 @@
   {
    "date": "2026-11-26",
    "post": "kira-uyusmazliklarinda-zorunlu-arabuluculuk"
+  },
+  {
+   "date": "2026-11-27",
+   "post": "aidat-ve-ortak-giderler"
   }
  ],
  "gloss_i": 15,

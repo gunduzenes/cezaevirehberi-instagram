@@ -1,5 +1,5 @@
 {
- "posts": 18,
+ "posts": 19,
  "used_topics": [
   "tapu-devri-adim-adim",
   "kira-artis-siniri",
@@ -9,7 +9,8 @@
   "hisseli-tapu-payli-ve-elbirligi-mulkiyet",
   "satis-vaadi-sozlesmesi-ve-noter",
   "kira-uyusmazliklarinda-zorunlu-arabuluculuk",
-  "aidat-ve-ortak-giderler"
+  "aidat-ve-ortak-giderler",
+  "kentsel-donusum-sureci-adim-adim"
  ],
  "log": [
   {
@@ -83,6 +84,10 @@
   {
    "date": "2026-11-27",
    "post": "aidat-ve-ortak-giderler"
+  },
+  {
+   "date": "2026-11-28",
+   "post": "kentsel-donusum-sureci-adim-adim"
   }
  ],
  "gloss_i": 15,
